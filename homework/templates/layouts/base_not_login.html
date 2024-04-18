@@ -1,0 +1,57 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Askme</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+</html>
+
+<body>
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid container-lg">
+            <a class="navbar-brand" href="/">AskSheremetev</a>
+            <form class="d-flex" role="ASK!">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <div class="d-flex flex-column justify-content-between">
+                <div>
+                    <a class="me-2" href="/login">log in</a>
+                    <a href="/signup">register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid container-lg mt-3">
+        <div>
+
+        </div>
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+            <div class="col-md-4 col-sm-12">
+                <h3>Popular Tags</h3>
+                <div class="row">
+                    <div class="col">
+                        {% for tag in tags %}
+                            <a href="/tag/{{ tag.tag }}" class="badge-success">{{ tag.tag }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <h3 class="mt-5">Best Members</h3>
+                <div class="row">
+                    {% for member in members %}
+                        <h5 class="mt-1">{{ member.member }}</h5>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>

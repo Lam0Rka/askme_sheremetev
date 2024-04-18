@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Askme</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+</html>
+
+<body>
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid container-lg">
+            <a class="navbar-brand">AskSheremetev</a>
+            <form class="d-flex" role="ASK!">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <div class="d-flex flex-column justify-content-between">
+                <div>
+                    <a class="me-2" href="/login.html">log in</a>
+                    <a href="/signup.html">register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid container-lg mt-3">
+        <div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-12 row">
+                <form>
+                    <h1 class="mb-4">Log In</h1>
+                    <h6 class="mb-4 text-danger">Sorry, wrong password!</h6>
+                    <!-- Email input -->
+                    <div class="form-outline mb-2 col-6">
+                        <div class="row">
+                            <label class="form-label col" for="form2Example1">Login</label>
+                            <input type="email" id="form2Example1" class="form-control col"/>
+                        </div>
+                    </div>
+                  
+                    <!-- Password input -->
+                    <div class="form-outline mb-2 col-6">
+                        <div class="row">
+                            <label class="form-label col" for="form2Example2">Password</label>
+                            <input type="password" id="form2Example2" class="form-control col" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-block mb-4 ml-10">Sign in</button>
+                        <p>Not a member?<a class="text-center ms-2 me-2" href="/signup.html">Create new account</a></p>
+                    </div>
+                  
+                </form>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <h3>Popular Tags</h3>
+                <div class="row">
+                    <div class="col">
+                        <span class="badge text-bg-primary">Primary</span>
+                        <span class="badge text-bg-secondary">Secondary</span>
+                        <span class="badge text-bg-success">Success</span>
+                        <span class="badge text-bg-danger">Danger</span>
+                        <span class="badge text-bg-warning">Warning</span>
+                        <span class="badge text-bg-info">Info</span>
+                        <span class="badge text-bg-light">Light</span>
+                        <span class="badge text-bg-dark">Dark</span>
+                    </div>
+                </div>
+                <h3 class="mt-5">Best Members</h3>
+                <div class="row">
+                    <a class="mt-2" href="/member.html">Mr. Freeman</a>
+                    <a class="mt-2" href="/member.html">Mr. Freeman</a>
+                    <a class="mt-2" href="/member.html">Mr. Freeman</a>
+                    <a class="mt-2" href="/member.html">Mr. Freeman</a>
+                    <a class="mt-2" href="/member.html">Mr. Freeman</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>

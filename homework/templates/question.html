@@ -1,0 +1,32 @@
+{% extends "layouts/base_login.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+        {% block content %}
+            <div class="col-md-8 col-sm-12">
+                <div class="row">
+                    {% for question in questions %}    
+                        {% include "layouts/question_for_question.html" with item=question %}
+                    {% endfor %}
+                    <hr class="mt-3"/>
+                    
+                    {% for answer in answers %}    
+                        {% include "layouts/answer_for_question.html" with item=answer %}
+                    {% endfor %}
+                    
+                    <hr class="mt-4"/>
+                </div>
+                {% include "layouts/pagination.html" with page_obj=answers %}
+
+
+                <div class="col-10">
+                    <label for="exampleFormControlTextarea1" class="form-label">Your answer:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+                <div class="mt-2">
+                    <button type="button" class="btn btn-primary btn-block mb-4">Answer!</button>
+                </div>
+            </div>
+        {% endblock %}

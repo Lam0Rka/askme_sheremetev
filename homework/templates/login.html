@@ -1,0 +1,35 @@
+{% extends "layouts/base_not_login.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+        {% block content %}
+            <div class="col-md-8 col-sm-12 row">
+                <form>
+                    <h1 class="mb-4">Log In</h1>
+                    <h6 class="mb-4 text-danger">Sorry, wrong password!</h6>
+                    <!-- Email input -->
+                    <div class="form-outline mb-2 col-6">
+                        <div class="row">
+                            <label class="form-label col" for="form2Example1">Login</label>
+                            <input type="email" id="form2Example1" class="form-control col"/>
+                        </div>
+                    </div>
+                  
+                    <!-- Password input -->
+                    <div class="form-outline mb-2 col-6">
+                        <div class="row">
+                            <label class="form-label col" for="form2Example2">Password</label>
+                            <input type="password" id="form2Example2" class="form-control col" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-block mb-4 ml-10">Sign in</button>
+                        <p>Not a member?<a class="text-center ms-2 me-2" href="/signup.html">Create new account</a></p>
+                    </div>
+                  
+                </form>
+            </div>
+        {% endblock %}

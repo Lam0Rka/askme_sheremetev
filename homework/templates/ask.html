@@ -1,0 +1,29 @@
+{% extends "layouts/base_login.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+        {% block content %}
+            <div class="col-md-8 col-sm-12">
+                <div class="row">
+                    <h1>New Question</h1>
+                    <div class="mb-3 col-8">
+                        <label for="exampleFormControlTextarea1" class="form-label">Title</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                    </div>
+                    <div class="mb-3 col-8">
+                        <label for="exampleFormControlTextarea1" class="form-label">Text</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    </div>
+                    <div class="mb-3 col-8">
+                        <label for="exampleFormControlTextarea1" class="form-label">Tags</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-primary btn-block mb-4">ASK!</button>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
