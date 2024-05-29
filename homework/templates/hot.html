@@ -1,3 +1,4 @@
+
 {% extends "layouts/base_login.html" %}
 {% load static %}
 
@@ -5,22 +6,24 @@
 <html lang="en">
 
 
-
+      {% for tag in tags %}
+        {% include "layouts/question_for_index.html" with item=question %}
+      {% endfor %}
         {% block content %}
           <div class="d-flex gap-3 align-items-center">
             <h1>Hot Questions 🔥</h1>
-            <a href="/">New Questions</a>
+            <a href="/hot">New Questions</a>
           </div>
             <div class="col-md-8 col-sm-12">
               <div class="column">
-                  {% for question in questions %}
-                    
-                    {% include "layouts/question_for_index.html" with item=question %}
-  
-                  {% endfor %}
-  
-                  {% include "layouts/pagination.html" with page_obj=questions %}
+                {% for question in questions %}
                   
-                </div>
+                  {% include "layouts/question_for_index.html" with item=question %}
+
+                {% endfor %}
+
+                {% include "layouts/pagination.html" with page_obj=questions %}
+                
               </div>
-            {% endblock %}
+            </div>
+          {% endblock %}

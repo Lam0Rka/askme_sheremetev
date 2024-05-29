@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.paginator import Paginator
+from app.models import Question, Answer, Tag
 import string
-
+from django.db import models
+from django.db.models import Count
 # Create your views here.
 
 QUESTIONS = [
@@ -50,14 +52,21 @@ USER = [
 
 
 def index(request):
-    paginate_obj = paginate(QUESTIONS, request)
+    paginate_obj = paginate(Question.objects.get_new(), request)
     return render(request, 'index.html', {"questions": paginate_obj, "tags": TAGS, "members": BEST_MEMBERS})
 
 
 def hot(request):
-    paginate_obj = paginate(QUESTIONS[5:], request)
+    paginate_obj = paginate(Question.objects.get_hot(), request)
     return render(request, template_name='hot.html', context= {"questions": paginate_obj, "tags": TAGS, "members": BEST_MEMBERS})
+# def index(request):
+#     page_obj = paginate(Question.objects.get_new(), request)
+#     return render(request, "index.html", {"questions": page_obj, "tags": TAGS, "members": BEST_MEMBERS})
 
+
+# def hot(request):
+#     page_obj = paginate(Question.objects.get_new(), request)
+#     return render(request, "hot.html", {"questions": page_obj, "tags": TAGS, "members": BEST_MEMBERS})
 
 def ask(request):
 
@@ -70,13 +79,22 @@ def login(request):
 
 
 def question(request, question_id):
-    paginate_obj = paginate(ANSWER_QUESTIONS, request)
-    return render(request, 'question.html', {"answers": paginate_obj, "tags": TAGS, "members": BEST_MEMBERS, "questions": QUESTIONS_QUESTION})
+    
+    item = Question.objects.get(pk=question_id)
+    answers = Answer.objects.annotate(answer_likes_count=models.Count('answerlike')).filter(question_id=question_id)
+    page_obj = paginate(answers, request)
+    return render(request, 'question.html', {"answers": page_obj, "tags": TAGS, "members": BEST_MEMBERS, "question": item})
+
+# def question(request, question_id):
+#     item = Question.objects.get(pk=question_id)
+#     answers = Answer.objects.annotate(answer_likes_count=models.Count('answerlike')).filter(question_id=question_id)
+#     page_obj = pagination(request, answers)
+#     return render(request, "question.html", {"questions": item, "answers": page_obj, "tags": TAGS, "members": BEST_MEMBERS})
 
 
 def tag(request, tag_name):
-    paginate_obj = paginate(QUESTIONS, request)
-    return render(request, 'tag.html', {"questions": paginate_obj, "tags": TAGS, "members": BEST_MEMBERS, "tag_name": tag_name})
+    page_obj = paginate(Question.objects.get_by_tag(tag_name), request)
+    return render(request, "tag.html", {"tag_name": tag_name, "questions": page_obj, "tags": TAGS, "members": BEST_MEMBERS,})
 
 
 def settings(request):

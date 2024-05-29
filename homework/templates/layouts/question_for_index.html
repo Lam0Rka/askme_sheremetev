@@ -10,22 +10,25 @@
             />
             </div>
             <div class="input-group flex-nowrap">
-            <input type="number" value="5" class="form-control" />
+                <input type="number" value="{{ item.question_likes_count }}" class="form-control"/>
             </div>
         </div>
         <div class="col">
             <div class="card-body">
             <h5 class="card-title">
-                <a href="/question/{{ question.id }}">{{ question.title }}</a>
+                <a href="{% url "question" item.id %}">{{item.question_title}}</a>
+
             </h5>
             <p class="card-text">
-                {{ question.text }}
+                {{ question.question_field }}
             </p>
             <div class="row">
                 <a class="col-4" href="/question/{{ question.id }}">{{ question.answers }}</a>
                 <div class="col-8">
                 <span>Tags:</span>
-                <a href="/tag/{{ question.tag }}">{{ question.tag }}</a>
+                {% for tag in question.tags.all %}
+                <a href="{% url "tag" tag_name=tag.tag_name %}">{{ tag.tag_name }}</a>
+                {% endfor %}
                 </div>
             </div>
             </div>

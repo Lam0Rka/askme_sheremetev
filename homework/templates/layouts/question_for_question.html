@@ -5,10 +5,12 @@
         <input type="number" value="5" class="form-control" />
     </div>
     <div class="col-md-8">
-        <h3 class="mb-3">{{ question.title }}</h3>
+        <h3 class="mb-3">{{ question.question_title }}</h3>
         <p class="text-wrap text-break">
-            {{ question.text }}
+            {{ question.question_field }}
         </p>
         <span>Tags:</span>
-            <a href="/tag/{{ question.tag }}">{{ question.tag }}</a>
+        {% for tag in question.tags.all %}
+        <a href="{% url "tag" tag_name=tag.tag_name %}">{{ tag.tag_name }}</a>
+        {% endfor %}
     </div>
