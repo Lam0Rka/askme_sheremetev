@@ -28,7 +28,7 @@ class Command(BaseCommand):
     # done
     def create_tags(self, count):
         print('Creating tags')
-        tags = [models.Tag(tag_name=f'Tag {i}') for i in range (count)]
+        tags = [models.Tag(tag_name=f'Tag {i + count}') for i in range (count)]
         models.Tag.objects.bulk_create(tags)
         print('Finish creating tags')
 
@@ -41,7 +41,7 @@ class Command(BaseCommand):
 
     def create_users(self, count):
         print('Creating users')
-        names = [User(username=f'User_{i}', email=f'User_{i}@example.com', password=f'Password{i}', first_name=f'Name {i}') for i in range (count)]
+        names = [User(username=f'User_{i + count}', email=f'User_{i + count}@example.com', password=f'Password{i + count}', first_name=f'Name {i + count}') for i in range (count)]
         user = User.objects.bulk_create(names)
         # models.Profile.objects.bulk_create(user=user)
         print('Finish creating users')
@@ -51,7 +51,7 @@ class Command(BaseCommand):
         users = User.objects.all() 
         tagss = models.Tag.objects.all()
         
-        questions = [models.Question(user=random.choice(users),rating=random.randrange(500), question_title=f'Title {i}', question_field=f'Field {i}') for i in range (count)]
+        questions = [models.Question(user=random.choice(users),rating=random.randrange(500), question_title=f'Title {i + count}', question_field=f'Field {i + count}') for i in range (count)]
         q_instance = models.Question.objects.bulk_create(questions)
         questions = models.Question.objects.all()
 
@@ -65,7 +65,7 @@ class Command(BaseCommand):
         print('Creating answers')
         users = User.objects.all()
         questions = models.Question.objects.all()
-        answers = [models.Answer(user=random.choice(users), question=random.choice(questions),rating=random.randrange(500), answer_field=f'Field {i}', is_true=random.randrange(2)) for i in range (count)]
+        answers = [models.Answer(user=random.choice(users), question=random.choice(questions),rating=random.randrange(500), answer_field=f'Field {i + count}', is_true=random.randrange(2)) for i in range (count)]
         models.Answer.objects.bulk_create(answers)
         print('Finish creating ansers')
 

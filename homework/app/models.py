@@ -12,7 +12,7 @@ class QuestionManager(models.Manager):
 
     def get_by_tag(self, tag_name):
         self = self.answers_count()
-        return self.filter(tags__name=tag_name).annotate(question_likes_count=models.Count('questionlike',  distinct=True)).order_by(
+        return self.filter(tags__tag_name=tag_name).annotate(question_likes_count=models.Count('questionlike',  distinct=True)).order_by(
             'created_at')
 
     def answers_count(self):

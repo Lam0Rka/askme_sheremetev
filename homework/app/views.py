@@ -59,14 +59,6 @@ def index(request):
 def hot(request):
     paginate_obj = paginate(Question.objects.get_hot(), request)
     return render(request, template_name='hot.html', context= {"questions": paginate_obj, "tags": TAGS, "members": BEST_MEMBERS})
-# def index(request):
-#     page_obj = paginate(Question.objects.get_new(), request)
-#     return render(request, "index.html", {"questions": page_obj, "tags": TAGS, "members": BEST_MEMBERS})
-
-
-# def hot(request):
-#     page_obj = paginate(Question.objects.get_new(), request)
-#     return render(request, "hot.html", {"questions": page_obj, "tags": TAGS, "members": BEST_MEMBERS})
 
 def ask(request):
 
@@ -85,11 +77,6 @@ def question(request, question_id):
     page_obj = paginate(answers, request)
     return render(request, 'question.html', {"answers": page_obj, "tags": TAGS, "members": BEST_MEMBERS, "question": item})
 
-# def question(request, question_id):
-#     item = Question.objects.get(pk=question_id)
-#     answers = Answer.objects.annotate(answer_likes_count=models.Count('answerlike')).filter(question_id=question_id)
-#     page_obj = pagination(request, answers)
-#     return render(request, "question.html", {"questions": item, "answers": page_obj, "tags": TAGS, "members": BEST_MEMBERS})
 
 
 def tag(request, tag_name):
